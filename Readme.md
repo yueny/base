@@ -6,17 +6,20 @@
 包含
 * **base-core**
    * 管理maven、仓库等信息， 独立依赖.
+
    [![base-core](https://file-vague.codealy.com/code/yueny/base/base-core.jpg)]()
    
 * **yueny-parent**
    * parent 为  base-core;
    * 管理第三方插件的版本信息;
+
    [![yueny-parent](https://file-vague.codealy.com/code/yueny/base/yueny-parent.jpg)]()
    
 
 * **boot-parent**
    * 继承了 spring-boot-starter-parent 1.5.3.RELEASE
    * 管理第三方插件的版本信息;
+
    [![boot-parent](https://file-vague.codealy.com/code/yueny/base/boot-parent.jpg)]()
 
 ================
