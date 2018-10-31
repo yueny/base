@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 
+	<parent>
+		<groupId>com.yueny</groupId>
+		<artifactId>base-core</artifactId>
+		<version>1.1.5-SNAPSHOT</version>
+	</parent>
+	 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
+	</parent>
+	
+	<groupId>com.yueny</groupId>
+	<artifactId>boot-parent</artifactId>
+	<version>1.1.5-RELEASE</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+  
+	<properties>
+		<lombok.version>1.16.8</lombok.version>
+		<dozer.version>5.3.2</dozer.version>
+		<zookeeper.version>3.4.7</zookeeper.version>
+		<zkclient.version>0.7</zkclient.version>
+
+		<!-- Build args -->
+		<file.encoding>UTF-8</file.encoding>
+		<project.build.sourceEncoding>${file.encoding}</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<skip.maven.deploy>false</skip.maven.deploy>
+		<skipTest>true</skipTest>
+		
+		<!-- maven插件版本号 -->
+		<version-maven-compiler-plugin>3.6.1</version-maven-compiler-plugin>
+		<version-maven-deploy-plugin>2.8.2</version-maven-deploy-plugin>
+		<maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
+		<version-maven-assembly-plugin>3.0.0</version-maven-assembly-plugin>
+		<version-maven-release-plugin>2.5.3</version-maven-release-plugin>
+		<version-maven-javadoc-plugin>2.10.4</version-maven-javadoc-plugin>
+		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
+
+		<nexus.maven.url.version>47.93.158.14:9090</nexus.maven.url.version>
+	</properties>
+	
+	<dependencyManagement>
+    	<dependencies>
+		 	<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>2.2</version>
+			</dependency>
+			
+	        <dependency>
+			    <groupId>com.lmax</groupId>
+			    <artifactId>disruptor</artifactId>
+			    <version>3.3.6</version>
+			</dependency>
+			
+		 	<!-- UserAgent -->
+		 	<dependency>
+	            <groupId>eu.bitwalker</groupId>
+	            <artifactId>UserAgentUtils</artifactId>
+	            <version>1.19</version>
+	        </dependency>
+			
+			<dependency>
+				<groupId>com.nurkiewicz.asyncretry</groupId>
+				<artifactId>asyncretry</artifactId>
+				<version>0.0.7</version>
+			</dependency>
+
+			<!-- common -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.3.2</version>
+			</dependency>
+			<dependency>
+	            <groupId>org.apache.commons</groupId>
+	            <artifactId>commons-math3</artifactId>
+	            <version>3.3</version>
+	        </dependency>
+	        <dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>4.0</version>
+			</dependency>
+			<dependency>
+			  <groupId>org.apache.commons</groupId>
+			  <artifactId>commons-pool2</artifactId>
+			  <version>2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.10</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.2</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+	  					<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.3.1</version>
+			</dependency>
+			<dependency>
+	            <groupId>org.apache.poi</groupId>
+	            <artifactId>poi-ooxml</artifactId>
+	            <version>3.11</version>
+	        </dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>15.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.2.4</version>
+			</dependency>
+			
+			<!-- SSH2的一个纯Java实现。它允许你连接到一个sshd 服务器，使用端口转发，X11转发，文件传输等等 -->
+			<dependency>
+				<groupId>com.jcraft</groupId>
+				<artifactId>jsch</artifactId>
+				<version>0.1.53</version>
+			</dependency>
+			
+			<!-- Project Lombok -->
+			<dependency>
+		        <groupId>org.projectlombok</groupId> 
+		        <artifactId>lombok</artifactId>
+		        <version>${lombok.version}</version>
+		        <scope>provided</scope>
+		    </dependency>
+		    <dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>${dozer.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-beanutils</groupId>
+						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>1.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>2.3</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>5.2.4.Final</version>
+			</dependency>
+			<dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+		
+			<!-- baidu -->
+			<dependency>
+				<groupId>com.baidu.noah.naming</groupId>
+				<artifactId>naming-sdk-java</artifactId>
+				<version>1.0.0.0</version>
+			</dependency>
+			
+			<!-- alibaba -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.18</version>
+				<exclusions>
+	                <exclusion>
+	                    <artifactId>jconsole</artifactId>
+	                    <groupId>com.alibaba</groupId>
+	                </exclusion>
+	                <exclusion>
+	                    <artifactId>tools</artifactId>
+	                    <groupId>com.alibaba</groupId>
+	                </exclusion>
+	            </exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>2.8.4</version>
+				<exclusions>
+					<exclusion>
+				        <groupId>org.springframework</groupId>
+				        <artifactId>spring</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+	  					<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.httpcomponents</groupId>
+						<artifactId>httpcore</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.httpcomponents</groupId>
+						<artifactId>httpclient</artifactId>
+					</exclusion>
+					<!-- jdk1.8需要升级javassist 到3.18版本
+					<exclusion>
+						<groupId>org.javassist</groupId>
+						<artifactId>javassist</artifactId>
+					</exclusion>
+					  -->
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.18.2-GA</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.8</version>
+			</dependency>
+
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>1.0</version>
+			</dependency>
+			
+			<!-- zookeeper client -->
+			<dependency>
+			    <groupId>org.apache.zookeeper</groupId>  
+			    <artifactId>zookeeper</artifactId>  
+			    <version>${zookeeper.version}</version>
+			    <exclusions>
+			    	<exclusion>
+						<groupId>log4j</groupId>
+	  					<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>log4j</groupId>
+	  					<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			 
+			<!-- 用于处理包括ISO8601标准在内的date和time	-->
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.3</version>
+			</dependency>
+			<!-- 用于处理金额 -->
+			<dependency>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-money</artifactId>
+				<version>0.9.1</version>
+			</dependency>
+			
+			<!-- Java对象和XML之间来回转换 -->
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor-xml</artifactId>
+				<version>1.3.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor-core</artifactId>
+				<version>1.3.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>javax.servlet.jsp-api</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+	            <groupId>javax.servlet.jsp</groupId>
+	            <artifactId>jsp-api</artifactId>
+	            <version>2.2</version>
+	        </dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+			   <groupId>javax.el</groupId>
+			   <artifactId>javax.el-api</artifactId>
+			   <version>2.2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>javax.el</artifactId>
+				<version>2.2.4</version>
+			</dependency>
+			<dependency>
+			    <groupId>taglibs</groupId>
+			    <artifactId>standard</artifactId>
+			    <version>1.1.2</version>
+			</dependency>
+			
+			<!-- http -->
+	        <dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<!-- 注解 -->
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>1.0.2</version>
+			</dependency>
+			
+			<!-- Auto service annotation processor -->
+		    <dependency>
+				<groupId>com.google.auto.service</groupId>
+				<artifactId>auto-service</artifactId>
+				<version>1.0-rc1</version>
+		    </dependency>
+			<!-- Java Poet to generate java files -->
+			<dependency>
+				<groupId>com.squareup</groupId>
+				<artifactId>javapoet</artifactId>
+				<version>1.1.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.apache.kafka</groupId>
+				<artifactId>kafka_2.10</artifactId>
+				<version>0.9.0.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<!-- image -->
+			<dependency>
+				<groupId>net.coobird</groupId>
+				<artifactId>thumbnailator</artifactId>
+				<version>0.4.8</version>
+			</dependency>
+			
+			<!-- MongoDB Clients -->
+			<dependency>
+				<groupId>org.jongo</groupId>
+				<artifactId>jongo</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+	            <groupId>org.mongodb</groupId>
+	            <artifactId>mongo-java-driver</artifactId>
+	            <version>3.2.2</version>
+	        </dependency>
+			
+			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derby</artifactId>
+				<version>10.10.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>2.3.0</version>
+			</dependency>
+			
+			<!-- MQ -->
+			<dependency>
+				<groupId>com.alibaba.rocketmq</groupId>
+				<artifactId>rocketmq-client</artifactId>
+				<version>3.2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.rocketmq</groupId>
+	            <artifactId>rocketmq-srvutil</artifactId>
+	            <version>3.2.6</version>
+	        </dependency>
+        	<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-spring</artifactId>
+				<version>5.8.0</version>
+			</dependency>
+			
+			<!-- 添加jsoup支持 -->
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>1.8.3</version>
+			</dependency>
+    	</dependencies>
+	</dependencyManagement>
+    
+    <!-- 个人下载仓库 -->
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<!-- 
+			<url>http://nexus.yueny.top/content/groups/public/</url>
+			 -->
+			<url>http://${nexus.maven.url.version}/nexus/content/groups/public/</url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<!-- 个人发布仓库 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Snapshots Repository</name>
+			<url>http://${nexus.maven.url.version}/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus-releases</id>
+			<name>nexus repository</name>
+			<url>http://${nexus.maven.url.version}/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+	
+    <build>
+		<pluginManagement>
+			<plugins>
+				<!-- 编译源代码 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version-maven-compiler-plugin}</version>
+					<configuration>
+						<skip>${skipTest}</skip>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<encoding>${file.encoding}</encoding>
+						<compilerVersion>${java.version}</compilerVersion>
+					</configuration>
+				</plugin>
+				<!-- 发布插件  -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${version-maven-deploy-plugin}</version>
+					<configuration>
+						<skip>${skip.maven.deploy}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+					<configuration>
+						<useSystemClassLoader>true</useSystemClassLoader>
+						<forkMode>once</forkMode>
+						<skip>${skipTest}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven.jar.plugin.version}</version>
+					<configuration>
+						<archive>
+							<addMavenDescriptor>true</addMavenDescriptor>
+							<index>true</index>
+							<manifest>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${version-maven-assembly-plugin}</version>
+					<configuration>
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<ajdtVersion>none</ajdtVersion>
+					</configuration>
+				</plugin>
+				<plugin>
+	                 <groupId>org.apache.maven.plugins</groupId>
+	                 <artifactId>maven-release-plugin</artifactId>
+	                 <version>${version-maven-release-plugin}</version>
+	                 <configuration>
+	                   <autoVersionSubmodules>true</autoVersionSubmodules>
+	                   <useReleaseProfile>false</useReleaseProfile>
+	                   <releaseProfiles>release</releaseProfiles>
+	                   <goals>deploy</goals>
+	                 </configuration>
+	            </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version-maven-javadoc-plugin}</version>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>install</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<charset>${project.build.sourceEncoding}</charset>
+						<quiet>true</quiet>
+						<failOnError>false</failOnError>
+						<stylesheet>maven</stylesheet>
+						<tags>
+							<tag>
+								<name>Author</name>
+								<placement>a</placement>
+								<head>Author</head>
+							</tag>
+						</tags>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version-maven-source-plugin}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.codehaus.sonar</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>4.5.7</version>
+					<executions>
+						<execution>
+							<id>sonar</id>
+							<phase>site</phase>
+							<goals>
+								<goal>sonar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<!-- 人员信息 -->
+    <developers>
+        <developer>
+            <name>yuanyang</name>
+            <email>deep_blue_yang@163.com</email>
+            <roles>
+                <role>software engineer</role>
+            </roles>
+            <timezone>9</timezone>
+        </developer>
+    </developers>
+    
+	<licenses>
+	     <license>
+	       <name>The Apache License, Version 2.0</name>
+	       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	     </license>
+	</licenses>
+	
+</project>

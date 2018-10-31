@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.yueny</groupId>
+	<artifactId>base-core</artifactId>
+	<version>1.1.5-RELEASE</version>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+
+	<properties>
+		<file.encoding>UTF-8</file.encoding>
+		<project.build.sourceEncoding>${file.encoding}</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<skip.maven.deploy>false</skip.maven.deploy>
+		<skipTest>true</skipTest>
+		
+		<!-- maven插件版本号 -->
+		<maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+		<maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+		<maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
+		<maven.eclipse.plugin.version>2.10</maven.eclipse.plugin.version>
+		<maven.codehaus.mojo.version>2.2</maven.codehaus.mojo.version>
+		<maven.codehaus.sonar.version>4.5.7</maven.codehaus.sonar.version>
+		<maven.assembly.plugin.version>3.0.0</maven.assembly.plugin.version>
+		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
+		<maven.lombok.plugin.version>1.16.6.1</maven.lombok.plugin.version>
+		<maven.resources.plugin.version>2.5</maven.resources.plugin.version>
+		
+		<!-- 需要 ${env} -->
+		<maven.war.plugin.version>2.2</maven.war.plugin.version>
+		<nexus.maven.url.version>47.93.158.14:9090</nexus.maven.url.version>
+
+		<!-- Sonar -->
+		<jacoco.maven.version>0.7.9</jacoco.maven.version>
+		<jetty.maven.plugin.version>9.2.9.v20150224</jetty.maven.plugin.version>
+		
+		<!-- 可重写覆盖项 -->
+		<sonar.java.binaries>${basedir}/target/classes/com</sonar.java.binaries>
+		<jetty.port>8212</jetty.port>
+    	<jetty.logger.level>DEBUG</jetty.logger.level>
+    	
+		<version-maven-javadoc-plugin>2.10.4</version-maven-javadoc-plugin>
+		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
+	</properties>
+	
+	<!-- 个人下载仓库 -->
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<!-- 
+			<url>http://nexus.yueny.top/content/groups/public/</url>
+			 -->
+			<url>http://${nexus.maven.url.version}/nexus/content/groups/public/</url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<!-- 个人发布仓库 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Snapshots Repository</name>
+			<url>http://${nexus.maven.url.version}/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus-releases</id>
+			<name>nexus repository</name>
+			<url>http://${nexus.maven.url.version}/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- 编译源代码 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<skip>${skipTest}</skip>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<encoding>${file.encoding}</encoding>
+						<compilerVersion>${java.version}</compilerVersion>
+					</configuration>
+				</plugin>
+				<!-- 发布插件  -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven.deploy.plugin.version}</version>
+					<configuration>
+						<skip>${skip.maven.deploy}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven.eclipse.plugin.version}</version>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>false</downloadJavadocs>
+						<ajdtVersion>none</ajdtVersion>
+					</configuration>
+				</plugin>
+				<plugin>
+	                 <groupId>org.apache.maven.plugins</groupId>
+	                 <artifactId>maven-release-plugin</artifactId>
+	                 <version>${maven.release.plugin.version}</version>
+	                 <configuration>
+	                   <autoVersionSubmodules>true</autoVersionSubmodules>
+	                   <useReleaseProfile>false</useReleaseProfile>
+	                   <releaseProfiles>release</releaseProfiles>
+	                   <goals>deploy</goals>
+	                 </configuration>
+	            </plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version-maven-javadoc-plugin}</version>
+					<executions>
+						<execution>
+							<id>attach-javadoc</id>
+							<phase>install</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<charset>${project.build.sourceEncoding}</charset>
+						<quiet>true</quiet>
+						<failOnError>false</failOnError>
+						<stylesheet>maven</stylesheet>
+						<tags>
+							<tag>
+								<name>Author</name>
+								<placement>a</placement>
+								<head>Author</head>
+							</tag>
+						</tags>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version-maven-source-plugin}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>install</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+	                <groupId>org.codehaus.mojo</groupId>
+	                <artifactId>versions-maven-plugin</artifactId>
+	                <version>${maven.codehaus.mojo.version}</version>
+	            </plugin>
+	            
+	            <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven.surefire.plugin.version}</version>
+					<configuration>
+						<useSystemClassLoader>true</useSystemClassLoader>
+						<forkMode>once</forkMode>
+						<skip>${skipTest}</skip>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven.assembly.plugin.version}</version>
+					<configuration>
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
+					</configuration>
+				</plugin>
+				<plugin>
+				    <groupId>org.projectlombok</groupId>
+				    <artifactId>lombok-maven-plugin</artifactId>
+				    <version>${maven.lombok.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.plugin.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven.war.plugin.version}</version>
+					<executions>
+	                     <execution>
+	                         <phase>package</phase>
+	                         <goals>
+	                             <goal>war</goal>
+	                         </goals>
+	                         <configuration>
+	                             <classifier>${env}</classifier>
+	                         </configuration>
+	                     </execution>
+					</executions>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.codehaus.sonar</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${maven.codehaus.sonar.version}</version>
+					<executions>
+						<execution>
+							<id>sonar</id>
+							<phase>site</phase>
+							<goals>
+								<goal>sonar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<!-- jacoco -->
+		    	<plugin>
+				    <groupId>org.jacoco</groupId>
+				    <artifactId>jacoco-maven-plugin</artifactId>
+				    <version>${jacoco.maven.version}</version>
+				    <configuration>
+				        <destFile>${sonar.jacoco.reportPath}</destFile>
+				        <dataFile>${sonar.jacoco.reportPath}</dataFile>
+				        <output>file</output>
+				    </configuration>
+				    <executions>
+				        <execution>
+				            <id>pre-test</id>
+				            <goals><goal>prepare-agent</goal></goals>
+				        </execution>
+				        <execution>
+				            <id>post-unit-test</id>
+				            <phase>test</phase>
+				            <goals><goal>report</goal></goals>
+				            <configuration>
+				                <dataFile>${sonar.jacoco.reportPath}</dataFile>
+				                <outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
+				            </configuration>
+				        </execution>
+				    </executions>
+				</plugin>
+			
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.maven.plugin.version}</version>
+					<configuration>
+						<httpConnector>
+							<port>${jetty.port}</port>
+						</httpConnector>
+						<scanIntervalSeconds>0</scanIntervalSeconds>
+						<systemProperties>
+							<systemProperty>
+								<name>org.eclipse.jetty.LEVEL</name>
+								<value>${jetty.logger.level}</value>
+							</systemProperty>
+						</systemProperties>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<!-- 人员信息 -->
+    <developers>
+        <developer>
+            <name>yuanyang</name>
+            <email>deep_blue_yang@163.com</email>
+            <roles>
+                <role>software engineer</role>
+            </roles>
+            <timezone>9</timezone>
+        </developer>
+    </developers>
+    
+	<licenses>
+	     <license>
+	       <name>The Apache License, Version 2.0</name>
+	       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	     </license>
+	</licenses>
+	
+</project>
