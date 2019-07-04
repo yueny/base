@@ -13,26 +13,40 @@
    
    [![base-core](https://file-vague.codealy.com/code/yueny/base/base-core.jpg)]()
    
-   * <version>1.1.5-RELEASE</version>
+   * 版本发布历史
+     + <version>1.1.5-RELEASE</version> 最新稳定版
    
 * **yueny-parent**
-   * parent 为  base-core;
+   * 继承了 base-core;
+   * 依赖 base-core
    * 管理第三方插件的版本信息;
    
    [![yueny-parent](https://file-vague.codealy.com/code/yueny/base/yueny-parent.jpg)]()
    
-
+   * 版本发布历史
+        + <version>1.1.5-RELEASE</version> 最新稳定版
+        + <version>1.1.6-SNAPSHOT</version> 
+          - 升级 com.alibaba#fastjson 由 1.1.31 改为 1.2.58 [https://blog.csdn.net/yaofeiNO1/article/details/76377080?utm_source=blogxgwz8]
+          - 升级 logback 由 1.1.11 改为 1.2.3 [https://jira.qos.ch/browse/LOGBACK-1378]
+          - 升级 com.fasterxml.jackson.core#* 由 2.7.5 改为 2.9.5
+          - 升级 logback.ext.spring 由 0.1.1 改为 0.1.4
+          - 升级 slf4j 由 1.7.5 改为 1.7.25
+          - 升级 com.google.guava 由15.0 改为 19.0
+          - 升级 lombok 由 1.16.8 改为 1.16.16
+          - 升级 apache.commons.lang3由3.3.2改为 3.6
+          - 升级 spring.redis.version由 1.7.5.RELEASE 为 1.7.11.RELEASE
+          - 升级 org.freemarker由 2.3.23为 2.3.28
+        
 * **boot-parent**
    * 继承了 spring-boot-starter-parent 1.5.3.RELEASE
+   * 不依赖 base-core
    * 管理第三方插件的版本信息;
    
    [![boot-parent](https://file-vague.codealy.com/code/yueny/base/boot-parent.jpg)]()
 
+   * 版本发布历史
+        + <version>1.1.5-RELEASE</version> 最新稳定版
 
-# 版本发布历史
-================
-1.1.5-RELEASE
-最新稳定版
 
 # 同步历史
 20190703 已同步
