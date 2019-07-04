@@ -9,7 +9,7 @@
 	
 	<modules>
 		<module>core</module>
-		<module>parent</module>
+		<module>yueny</module>
 		<module>boot</module>
 	</modules>
   

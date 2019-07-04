@@ -13,6 +13,8 @@
    
    [![base-core](https://file-vague.codealy.com/code/yueny/base/base-core.jpg)]()
    
+   * <version>1.1.5-RELEASE</version>
+   
 * **yueny-parent**
    * parent 为  base-core;
    * 管理第三方插件的版本信息;
