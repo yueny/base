@@ -103,3 +103,5 @@ artifactId 改为  yueny-parent
 升级 spring.security.version 4.0.4.RELEASE 为 4.1.3.RELEASE
 增加 commons-codec 为 1.10
 增加 org.springframework#spring-aspects 为 4.3.3.RELEASE
+
+# 1.1.6之后 见 base/Readme.md

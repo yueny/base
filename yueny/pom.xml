@@ -36,7 +36,8 @@
 		<org.nutz.version>1.r.59</org.nutz.version>
 		<com.lmax.disruptor.version>3.3.6</com.lmax.disruptor.version>
 		<google.inject.guice.version>3.0</google.inject.guice.version>
-		<google.guava.version>19.0</google.guava.version>
+		<google.guava.version>27.0.1-jre</google.guava.version>
+
 		<google.code.gson.version>2.2.4</google.code.gson.version>
 		<reactivex.rxjava2.version>2.1.0</reactivex.rxjava2.version>
 		<bitwalker.UserAgentUtils.version>1.19</bitwalker.UserAgentUtils.version>

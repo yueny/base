@@ -31,7 +31,7 @@
           - 升级 com.fasterxml.jackson.core#* 由 2.7.5 改为 2.9.5
           - 升级 logback.ext.spring 由 0.1.1 改为 0.1.4
           - 升级 slf4j 由 1.7.5 改为 1.7.25
-          - 升级 com.google.guava 由15.0 改为 19.0
+          - 升级 com.google.guava 由15.0 改为 27.0.1-jre
           - 升级 lombok 由 1.16.8 改为 1.16.16
           - 升级 apache.commons.lang3由3.3.2改为 3.6
           - 升级 spring.redis.version由 1.7.5.RELEASE 为 1.7.11.RELEASE
