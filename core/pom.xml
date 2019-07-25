@@ -4,7 +4,7 @@
 
 	<groupId>com.yueny</groupId>
 	<artifactId>base-core</artifactId>
-	<version>1.1.5-RELEASE</version>
+	<version>1.1.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -27,7 +27,8 @@
 		<maven.release.plugin.version>2.5.3</maven.release.plugin.version>
 		<maven.lombok.plugin.version>1.16.6.1</maven.lombok.plugin.version>
 		<maven.resources.plugin.version>2.5</maven.resources.plugin.version>
-		
+		<maven.scm.plugin.version>1.9.5</maven.scm.plugin.version>
+
 		<!-- 需要 ${env} -->
 		<maven.war.plugin.version>2.2</maven.war.plugin.version>
 		<nexus.maven.url.version>47.93.158.14:9090</nexus.maven.url.version>
@@ -45,7 +46,7 @@
 		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
 	</properties>
 	
-	<!-- 个人下载仓库 -->
+	<!-- 个人下载仓库 repositories -->
 	<repositories>
 		<repository>
 			<id>nexus</id>
@@ -59,7 +60,7 @@
 		</repository>
 	</repositories>
 	
-	<!-- 个人发布仓库 -->
+	<!-- 个人发布仓库  distributionManagement -->
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
@@ -275,6 +276,16 @@
 						</systemProperties>
 					</configuration>
 				</plugin>
+
+				<!-- maven-scm 支持 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${maven.scm.plugin.version}</version>
+					<configuration>
+						<connectionType>developerConnection</connectionType>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -297,5 +308,12 @@
 	       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 	     </license>
 	</licenses>
+
+	<scm>
+		<url>https://github.com/yueny/base</url>
+		<connection>scm:https://github.com/yueny/base.git</connection>
+		<developerConnection>scm:https://github.com/yueny/base.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 	
 </project>

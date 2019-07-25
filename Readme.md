@@ -15,7 +15,10 @@
    
    * 版本发布历史
      + <version>1.1.5-RELEASE</version> 最新稳定版
-   
+     + 1.1.6-SNAPSHOT
+       - 增加 scm 插件
+       - 增加 scm 配置
+       
 * **yueny-parent**
    * 继承了 base-core;
    * 依赖 base-core
@@ -36,6 +39,9 @@
           - 升级 apache.commons.lang3由3.3.2改为 3.6
           - 升级 spring.redis.version由 1.7.5.RELEASE 为 1.7.11.RELEASE
           - 升级 org.freemarker由 2.3.23为 2.3.28
+          - base-core 升级为 1.1.6-SNAPSHOT
+          - 升级 alibaba.druid 由 1.0.13 为 1.1.16
+          - 升级 mysql-connector-java 由 5.1.37 为 8.0.11
         
 * **boot-parent**
    * 继承了 spring-boot-starter-parent 1.5.3.RELEASE
