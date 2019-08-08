@@ -42,7 +42,11 @@
           - base-core 升级为 1.1.6-SNAPSHOT
           - 升级 alibaba.druid 由 1.0.13 为 1.1.16
           - 升级 mysql-connector-java 由 5.1.37 为 8.0.11
+          - 增加 javax.persistence-api 2.2.
+                「注意:与persistence-api不兼容，必须二选一」
+                「注意:javax.persistence-api 新版本， persistence-api老版本」
         
+        			
 * **boot-parent**
    * 继承了 spring-boot-starter-parent 1.5.3.RELEASE
    * 不依赖 base-core
