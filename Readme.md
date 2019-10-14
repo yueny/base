@@ -15,9 +15,10 @@
    
    * 版本发布历史
      + <version>1.1.5-RELEASE</version> 最新稳定版
-     + 1.1.6-SNAPSHOT
+     + 1.1.6-SNAPSHOT/RELEASE
        - 增加 scm 插件
        - 增加 scm 配置
+       - 变更最新的maven仓库地址
        
 * **yueny-parent**
    * 继承了 base-core;
@@ -28,7 +29,7 @@
    
    * 版本发布历史
         + <version>1.1.5-RELEASE</version> 最新稳定版
-        + <version>1.1.6-SNAPSHOT</version> 
+        + <version>1.1.6-SNAPSHOT/RELEASE</version> 
           - 升级 com.alibaba#fastjson 由 1.1.31 改为 1.2.58 [https://blog.csdn.net/yaofeiNO1/article/details/76377080?utm_source=blogxgwz8]
           - 升级 logback 由 1.1.11 改为 1.2.3 [https://jira.qos.ch/browse/LOGBACK-1378]
           - 升级 com.fasterxml.jackson.core#* 由 2.7.5 改为 2.9.5
@@ -45,7 +46,7 @@
           - 增加 javax.persistence-api 2.2.
                 「注意:与persistence-api不兼容，必须二选一」
                 「注意:javax.persistence-api 新版本， persistence-api老版本」
-        
+          - 变更最新的maven仓库地址
         			
 * **boot-parent**
    * 继承了 spring-boot-starter-parent 1.5.3.RELEASE

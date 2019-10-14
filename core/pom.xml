@@ -4,7 +4,7 @@
 
 	<groupId>com.yueny</groupId>
 	<artifactId>base-core</artifactId>
-	<version>1.1.6-SNAPSHOT</version>
+	<version>1.1.6-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -50,10 +50,7 @@
 	<repositories>
 		<repository>
 			<id>nexus</id>
-			<!-- 
-			<url>http://nexus.yueny.top/content/groups/public/</url>
-			 -->
-			<url>http://${nexus.maven.url.version}/nexus/content/groups/public/</url>
+			<url>http://${nexus.maven.url.version}/repository/public/</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -65,12 +62,12 @@
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Snapshots Repository</name>
-			<url>http://${nexus.maven.url.version}/nexus/content/repositories/snapshots</url>
+			<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>nexus-releases</id>
 			<name>nexus repository</name>
-			<url>http://${nexus.maven.url.version}/nexus/content/repositories/releases/</url>
+			<url>http://${nexus.maven.url.version}/repository/releases/</url>
 		</repository>
 	</distributionManagement>
 	
@@ -294,7 +291,7 @@
     <developers>
         <developer>
             <name>yuanyang</name>
-            <email>deep_blue_yang@163.com</email>
+            <email>deep_blue_yang@126.com</email>
             <roles>
                 <role>software engineer</role>
             </roles>
