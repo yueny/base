@@ -90,7 +90,7 @@
 		<logback.version>1.2.3</logback.version>
 		<logback.ext.spring.version>0.1.4</logback.ext.spring.version>
 		
-		<fasterxml.jackson.version>2.9.5</fasterxml.jackson.version>
+		<fasterxml.jackson.version>2.10.0</fasterxml.jackson.version>
 		<jackson.asl.version>1.9.13</jackson.asl.version>
 		<jcraft.jsch.version>0.1.50</jcraft.jsch.version>
 		<jboss.netty.version>3.2.5.Final</jboss.netty.version>
