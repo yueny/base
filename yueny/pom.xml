@@ -30,7 +30,7 @@
 		<ehcache.version>2.6.8</ehcache.version>
 
 		<!-- job -->
-		<quartz.version>2.3.0</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<cglib.version>2.2</cglib.version>
 		<org.nutz.version>1.r.59</org.nutz.version>
 		<com.lmax.disruptor.version>3.3.6</com.lmax.disruptor.version>
