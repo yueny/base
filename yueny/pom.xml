@@ -74,7 +74,7 @@
 		<joda.time.version>2.3</joda.time.version>
 		<joda.money.version>0.9.1</joda.money.version>
 		<org.codehaus.castor.version>1.3.3</org.codehaus.castor.version>
-		<org.hibernate.validator.version>5.3.5.Final</org.hibernate.validator.version>
+		<org.hibernate.validator.version>5.3.6.Final</org.hibernate.validator.version>
 		<javax.validator.version>1.1.0.Final</javax.validator.version>
 
 		<!-- DB -->
