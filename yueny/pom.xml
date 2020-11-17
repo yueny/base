@@ -4,11 +4,11 @@
 	<parent>
 		<groupId>com.yueny</groupId>
 		<artifactId>base-core</artifactId>
-		<version>1.1.6-RELEASE</version>
+		<version>1.2.0-RELEASE</version>
 	</parent>
 	
 	<artifactId>yueny-parent</artifactId>
-	<version>1.1.6-RELEASE</version>
+	<version>1.2.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
   

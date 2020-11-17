@@ -4,7 +4,7 @@
 
 	<groupId>com.yueny</groupId>
 	<artifactId>base-core</artifactId>
-	<version>1.1.6-RELEASE</version>
+	<version>1.2.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 
@@ -31,7 +31,8 @@
 
 		<!-- 需要 ${env} -->
 		<maven.war.plugin.version>2.2</maven.war.plugin.version>
-		<nexus.maven.url.version>47.93.158.14:9090</nexus.maven.url.version>
+		<!-- bd -->
+		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>
 
 		<!-- Sonar -->
 		<jacoco.maven.version>0.7.9</jacoco.maven.version>

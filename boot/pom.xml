@@ -17,7 +17,7 @@
 	
 	<groupId>com.yueny</groupId>
 	<artifactId>boot-parent</artifactId>
-	<version>1.1.5-RELEASE</version>
+	<version>1.2.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
   
@@ -44,7 +44,8 @@
 		<version-maven-javadoc-plugin>2.10.4</version-maven-javadoc-plugin>
 		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
 
-		<nexus.maven.url.version>47.93.158.14:9090</nexus.maven.url.version>
+		<!-- bd -->
+		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>
 	</properties>
 	
 	<dependencyManagement>
