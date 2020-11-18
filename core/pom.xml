@@ -63,12 +63,12 @@
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Snapshots Repository</name>
-			<url>http://${nexus.maven.url.version}/repository/maven-public-snapshots/</url>
+			<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>nexus-releases</id>
 			<name>nexus repository</name>
-			<url>http://${nexus.maven.url.version}/repository/maven-public-releases/</url>
+			<url>http://${nexus.maven.url.version}/repository/releases-yueny/</url>
 		</repository>
 	</distributionManagement>
 	
