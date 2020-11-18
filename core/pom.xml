@@ -51,7 +51,7 @@
 	<repositories>
 		<repository>
 			<id>nexus</id>
-			<url>http://${nexus.maven.url.version}/repository/public/</url>
+			<url>http://${nexus.maven.url.version}/repository/maven-public/</url>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
@@ -63,12 +63,12 @@
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Snapshots Repository</name>
-			<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
+			<url>http://${nexus.maven.url.version}/repository/maven-public-snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>nexus-releases</id>
 			<name>nexus repository</name>
-			<url>http://${nexus.maven.url.version}/repository/releases/</url>
+			<url>http://${nexus.maven.url.version}/repository/maven-public-releases/</url>
 		</repository>
 	</distributionManagement>
 	
