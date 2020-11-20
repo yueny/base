@@ -45,7 +45,8 @@
 		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
 
 		<!-- bd -->
-		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>
+<!--		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>-->
+		<nexus.maven.url.version>nexus.whosly.com</nexus.maven.url.version>
 	</properties>
 	
 	<dependencyManagement>

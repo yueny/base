@@ -32,7 +32,8 @@
 		<!-- 需要 ${env} -->
 		<maven.war.plugin.version>2.2</maven.war.plugin.version>
 		<!-- bd -->
-		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>
+		<!--		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>-->
+		<nexus.maven.url.version>nexus.whosly.com</nexus.maven.url.version>
 
 		<!-- Sonar -->
 		<jacoco.maven.version>0.7.9</jacoco.maven.version>
