@@ -9,7 +9,7 @@
 所有项目和基础组件的依赖包。
 包含base-core、yueny-parent
 
-[![依赖图](base/base_依赖图.png)]()
+[![依赖图](https://github.com/yueny/base/blob/1.3.0/base_依赖图.png)]()
 
 ## **base-core**
    > 管理maven、仓库等信息， 独立依赖.
