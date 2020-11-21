@@ -104,4 +104,8 @@ artifactId 改为  yueny-parent
 增加 commons-codec 为 1.10
 增加 org.springframework#spring-aspects 为 4.3.3.RELEASE
 
-# 1.1.6之后 见 base/Readme.md
+# 1.2.0-SNAPSHOT/RELEASE
+无， 跟随 base-core 的变更, 见 base/Readme.md
+
+# 1.3.0-SNAPSHOT/RELEASE
+无， 跟随 base-core 的变更, 见 base/Readme.md

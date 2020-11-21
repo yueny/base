@@ -17,4 +17,11 @@ artifactId 改为 base-core
 增加maven-resources-plugin
 新增maven-war-plugin
 
-# 1.1.5-SNAPSHOT
+# 1.2.0-SNAPSHOT/RELEASE
+自定义新的nexus服务地址
+
+# 1.3.0-SNAPSHOT/RELEASE
+增加新的 profile 分支，本地为 nexus， 远程仓库为 sonatype-oss-nexus
+
+
+
