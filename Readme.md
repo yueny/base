@@ -12,7 +12,7 @@
 ## **base-core**
    > 管理maven、仓库等信息， 独立依赖.
   
-   [![core](https://file-vague.codealy.com/code/yueny/base/base-core.jpg)]()
+   [![tree/master/core](https://file-vague.codealy.com/code/yueny/base/base-core.jpg)]()
    
   
 ## **yueny-parent**
