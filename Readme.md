@@ -9,6 +9,8 @@
 所有项目和基础组件的依赖包。
 包含base-core、yueny-parent
 
+[![依赖图](base 依赖图.png)]()
+
 ## **base-core**
    > 管理maven、仓库等信息， 独立依赖.
   
@@ -76,5 +78,6 @@
    * 管理第三方插件的版本信息;
    
    [![boot](https://file-vague.codealy.com/code/yueny/base/boot-parent.jpg)]()
+   
 
    更多见 <boot> 子目录
