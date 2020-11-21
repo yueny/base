@@ -2,11 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+<!--	<parent>-->
+<!--		<groupId>org.sonatype.oss</groupId>-->
+<!--		<artifactId>oss-parent</artifactId>-->
+<!--		<version>9</version>-->
+<!--	</parent>-->
+
 	<groupId>com.whosly</groupId>
 	<artifactId>base-core</artifactId>
 	<version>1.3.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
+	<url>https://github.com/yueny/base</url>
+	<description>base dependency</description>
 
 	<properties>
 		<file.encoding>UTF-8</file.encoding>
@@ -48,6 +56,8 @@
 		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
 
 		<sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
+		<arguments />
+
 	</properties>
 
 	<build>
@@ -107,10 +117,8 @@
 	                 <version>${maven.release.plugin.version}</version>
 	                 <configuration>
 					   <mavenExecutorId>forked-path</mavenExecutorId>
-	                   <autoVersionSubmodules>true</autoVersionSubmodules>
 	                   <useReleaseProfile>false</useReleaseProfile>
-	                   <releaseProfiles>release</releaseProfiles>
-	                   <goals>deploy</goals>
+					   <arguments>${arguments} -Psonatype-oss-release</arguments>
 	                 </configuration>
 	            </plugin>
 				<plugin>
@@ -312,7 +320,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-enforcer-plugin</artifactId>
-						<version>1.0</version>
+						<version>1.2</version>
 						<executions>
 							<execution>
 								<id>enforce-maven</id>

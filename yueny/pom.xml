@@ -10,6 +10,8 @@
 	<artifactId>yueny-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
+	<url>https://github.com/yueny/base/yueny</url>
+	<description>base yueny dependency manager</description>
   
 	<properties>
 		<org.springframework.version>4.3.3.RELEASE</org.springframework.version>
