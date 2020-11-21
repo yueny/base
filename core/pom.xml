@@ -46,36 +46,29 @@
     	
 		<version-maven-javadoc-plugin>2.10.4</version-maven-javadoc-plugin>
 		<version-maven-source-plugin>2.2.1</version-maven-source-plugin>
+
+		<sonatypeOssDistMgmtSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</sonatypeOssDistMgmtSnapshotsUrl>
 	</properties>
-	
-	<!-- 个人下载仓库 repositories -->
-	<repositories>
-		<repository>
-			<id>nexus</id>
-			<url>http://${nexus.maven.url.version}/repository/maven-public/</url>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-	
-	<!-- 个人发布仓库  distributionManagement -->
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Snapshots Repository</name>
-			<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>nexus-releases</id>
-			<name>nexus repository</name>
-			<url>http://${nexus.maven.url.version}/repository/releases-yueny/</url>
-		</repository>
-	</distributionManagement>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
+				<!--  必须配置GPG插件用于使用以下配置对组件进行签名 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.6</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
 				<!-- 编译源代码 -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -113,6 +106,7 @@
 	                 <artifactId>maven-release-plugin</artifactId>
 	                 <version>${maven.release.plugin.version}</version>
 	                 <configuration>
+					   <mavenExecutorId>forked-path</mavenExecutorId>
 	                   <autoVersionSubmodules>true</autoVersionSubmodules>
 	                   <useReleaseProfile>false</useReleaseProfile>
 	                   <releaseProfiles>release</releaseProfiles>
@@ -122,38 +116,23 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${version-maven-javadoc-plugin}</version>
+					<version>2.7</version>
 					<executions>
 						<execution>
-							<id>attach-javadoc</id>
-							<phase>install</phase>
+							<id>attach-javadocs</id>
 							<goals>
 								<goal>jar</goal>
 							</goals>
 						</execution>
 					</executions>
-					<configuration>
-						<charset>${project.build.sourceEncoding}</charset>
-						<quiet>true</quiet>
-						<failOnError>false</failOnError>
-						<stylesheet>maven</stylesheet>
-						<tags>
-							<tag>
-								<name>Author</name>
-								<placement>a</placement>
-								<head>Author</head>
-							</tag>
-						</tags>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>${version-maven-source-plugin}</version>
+					<version>2.1.2</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
-							<phase>install</phase>
 							<goals>
 								<goal>jar-no-fork</goal>
 							</goals>
@@ -199,22 +178,6 @@
 						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>${maven.war.plugin.version}</version>
-					<executions>
-	                     <execution>
-	                         <phase>package</phase>
-	                         <goals>
-	                             <goal>war</goal>
-	                         </goals>
-	                         <configuration>
-	                             <classifier>${env}</classifier>
-	                         </configuration>
-	                     </execution>
-					</executions>
-				</plugin>
 				
 				<plugin>
 					<groupId>org.codehaus.sonar</groupId>
@@ -230,34 +193,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
-				<!-- jacoco -->
-		    	<plugin>
-				    <groupId>org.jacoco</groupId>
-				    <artifactId>jacoco-maven-plugin</artifactId>
-				    <version>${jacoco.maven.version}</version>
-				    <configuration>
-				        <destFile>${sonar.jacoco.reportPath}</destFile>
-				        <dataFile>${sonar.jacoco.reportPath}</dataFile>
-				        <output>file</output>
-				    </configuration>
-				    <executions>
-				        <execution>
-				            <id>pre-test</id>
-				            <goals><goal>prepare-agent</goal></goals>
-				        </execution>
-				        <execution>
-				            <id>post-unit-test</id>
-				            <phase>test</phase>
-				            <goals><goal>report</goal></goals>
-				            <configuration>
-				                <dataFile>${sonar.jacoco.reportPath}</dataFile>
-				                <outputDirectory>${project.reporting.outputDirectory}</outputDirectory>
-				            </configuration>
-				        </execution>
-				    </executions>
-				</plugin>
-			
+
 				<plugin>
 					<groupId>org.eclipse.jetty</groupId>
 					<artifactId>jetty-maven-plugin</artifactId>
@@ -288,31 +224,176 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
-	<!-- 人员信息 -->
-    <developers>
-        <developer>
-            <name>yuanyang</name>
-            <email>deep_blue_yang@126.com</email>
-            <roles>
-                <role>software engineer</role>
-            </roles>
-            <timezone>9</timezone>
-        </developer>
-    </developers>
-    
+
+	<profiles>
+		<!-- 默认本地 -->
+		<profile>
+			<id>nexus</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+
+			<!--	&lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;-->
+			<!--
+			repositories id,
+					与 distributionManagement ID，
+					与 setting.xml 中 mirrors id、 server id 均保持一致
+			-->
+			<repositories>
+				<repository>
+					<id>nexus-snapshots</id>
+					<url>http://${nexus.maven.url.version}/repository/maven-public/</url>
+					<snapshots>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+			</repositories>
+
+			<!-- 个人发布仓库  distributionManagement  -->
+			<distributionManagement>
+				<snapshotRepository>
+					<id>nexus-snapshots</id>
+					<name>Snapshots Repository</name>
+					<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>nexus-releases</id>
+					<name>nexus repository</name>
+					<url>http://${nexus.maven.url.version}/repository/releases-yueny/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+
+		<!--
+			由于生成javadoc和源jar以及使用GPG签署组件是一个相当耗时的过程，因此这些执行通常与正常的构建配置隔离并移动到配置文件中。
+			然后，在通过激活配置文件执行部署时，将使用此配置文件。
+		-->
+		<profile>
+			<id>sonatype-oss-nexus</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>1.0</version>
+						<executions>
+							<execution>
+								<id>enforce-maven</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireMavenVersion>
+											<version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
+											<message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.</message>
+										</requireMavenVersion>
+									</rules>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+
+			<!-- 【注】snapshotRepository 与 repository 中的 id 一定要与 setting.xml 中 server 的 id 保持一致！ -->
+			<!--	&lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;  -->
+			<repositories>
+				<repository>
+					<id>sonatype-nexus-snapshots</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+
+			<!-- sonatype 发布仓库 -->
+			<distributionManagement>
+				<snapshotRepository>
+					<id>sonatype-nexus-snapshots</id>
+					<name>Sonatype Nexus Snapshots</name>
+					<url>${sonatypeOssDistMgmtSnapshotsUrl}</url>
+				</snapshotRepository>
+				<repository>
+					<id>sonatype-nexus-staging</id>
+					<name>Nexus Release Repository</name>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+
 	<licenses>
-	     <license>
-	       <name>The Apache License, Version 2.0</name>
-	       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-	     </license>
+		<!-- Apache许可证 -->
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
 	</licenses>
 
+	<!-- SCM信息 -->
 	<scm>
 		<url>https://github.com/yueny/base</url>
 		<connection>scm:https://github.com/yueny/base.git</connection>
 		<developerConnection>scm:https://github.com/yueny/base.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+
+	<!-- 开发者信息 -->
+	<developers>
+		<developer>
+			<name>fengyang</name>
+			<email>deep_blue_yang@126.com</email>
+			<url>https://github.com/yueny</url>
+			<roles>
+				<role>software engineer</role>
+			</roles>
+			<timezone>9</timezone>
+		</developer>
+	</developers>
 	
 </project>
