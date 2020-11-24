@@ -101,14 +101,6 @@
         -  增加 commons-codec 为 1.10
         -  增加 org.springframework#spring-aspects 为 4.3.3.RELEASE
    
-   + 1.2.0-SNAPSHOT/RELEASE
-        - 无， 跟随 base-core 的变更, 见 base/Readme.md
-   
-   + 1.3.0-SNAPSHOT/RELEASE
-        - 无， 跟随 base-core 的变更, 见 base/Readme.md
-   
-   + 1.1.5-RELEASE
-        
    + 1.1.6-SNAPSHOT/RELEASE
       - 升级 com.alibaba#fastjson 由 1.1.31 改为 1.2.58 [https://blog.csdn.net/yaofeiNO1/article/details/76377080?utm_source=blogxgwz8]
       - 升级 logback 由 1.1.11 改为 1.2.3 [https://jira.qos.ch/browse/LOGBACK-1378]
@@ -127,3 +119,11 @@
             「注意:与persistence-api不兼容，必须二选一」
             「注意:javax.persistence-api 新版本， persistence-api老版本」
       - 变更最新的maven仓库地址
+      
+   + 1.2.0-SNAPSHOT/RELEASE
+        - 无， 跟随 base-core 的变更, 见 base/Readme.md
+   
+   + 1.3.0-SNAPSHOT/RELEASE
+        - 无， 跟随 base-core 的变更, 见 base/Readme.md
+   
+        
