@@ -7,6 +7,9 @@
 
 
 所有项目和基础组件的依赖包。
+项目已上传Maven中央仓库。
+> https://search.maven.org/search?q=whosly
+
 包含
 * **base-core**
    * 管理maven、仓库等信息， 独立依赖.
