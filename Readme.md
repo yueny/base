@@ -7,6 +7,10 @@
 
 
 所有项目和基础组件的依赖包。
+项目已上传Maven中央仓库。
+> https://search.maven.org/search?q=whosly
+
+
 包含base-core、yueny-parent
 
 见 [![base_core_依赖图.png](https://github.com/yueny/base/blob/1.3.0/base_core_依赖图.png)]()
