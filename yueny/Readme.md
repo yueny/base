@@ -126,4 +126,5 @@
    + 1.3.0-SNAPSHOT/RELEASE
         - 无， 跟随 base-core 的变更, 见 base/Readme.md
    
-        
+   + 1.3.1-SNAPSHOT
+        - 增加  com.ctrip.framework.apollo#apollo-client  1.7.0
