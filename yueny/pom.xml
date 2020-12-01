@@ -120,7 +120,9 @@
 		<springfox.swagger.version>2.4.0</springfox.swagger.version>
 				
 		<hystrix.version>1.5.4</hystrix.version>  
-		<hystrix-metrics-event-stream.version>1.5.4</hystrix-metrics-event-stream.version>   
+		<hystrix-metrics-event-stream.version>1.5.4</hystrix-metrics-event-stream.version>
+
+		<com.ctrip.framework.apollo.version>1.7.0</com.ctrip.framework.apollo.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -410,6 +412,13 @@
 				<groupId>org.jboss.logging</groupId>
 				<artifactId>jboss-logging</artifactId>
 				<version>${jboss.logging.version}</version>
+			</dependency>
+
+			<!-- apollo -->
+			<dependency>
+				<groupId>com.ctrip.framework.apollo</groupId>
+				<artifactId>apollo-client</artifactId>
+				<version>${com.ctrip.framework.apollo.version}</version>
 			</dependency>
 
 			<!-- alibaba -->
