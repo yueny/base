@@ -105,7 +105,7 @@
 		<alibaba.dubbo.version>2.8.4</alibaba.dubbo.version>
 		<brave.dubbo.version>1.0.0-SNAPSHOT</brave.dubbo.version>
 		
-		<httpclient.version>4.5.1</httpclient.version>
+		<httpclient.version>4.5.13</httpclient.version>
 		<javassist.version>3.18.2-GA</javassist.version>
 		<persistence.api.version>1.0.2</persistence.api.version>
 		<junit.version>4.12</junit.version>
