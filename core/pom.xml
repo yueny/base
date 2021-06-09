@@ -10,7 +10,7 @@
 
 	<groupId>com.whosly</groupId>
 	<artifactId>base-core</artifactId>
-	<version>1.4.0-SNAPSHOT</version>
+	<version>1.4.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<url>https://github.com/yueny/base</url>
@@ -339,7 +339,7 @@
 
 
 			<!-- 【注】snapshotRepository 与 repository 中的 id 一定要与 setting.xml 中 server 的 id 保持一致！ -->
-			<!--	&lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;  -->
+			<!--   &lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;  -->
 			<repositories>
 				<repository>
 					<id>sonatype-nexus-snapshots</id>

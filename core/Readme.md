@@ -32,6 +32,6 @@
 + 1.3.0-RELEASE
    - 增加新的 profile 分支，本地为 nexus， 远程仓库为 sonatype-oss-nexus
    
-+ 1.4.0-SNAPSHOT
++ 1.4.0-SNAPSHOT/RELEASE  (tree:1.3.1)
    - profile nexus remove maven-javadoc-plugin plugin
    
