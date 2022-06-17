@@ -51,7 +51,7 @@
 		<apache.commons.lang3.version>3.9</apache.commons.lang3.version>
 	    <commons.collections.version>3.2.1</commons.collections.version>
 		<commons.codec.version>1.10</commons.codec.version>
-	    <commons.io.version>2.5</commons.io.version>
+	    <commons.io.version>2.7</commons.io.version>
 		<commons.collections4.version>4.0</commons.collections4.version>
 		
 		<javax.api.version>2.5</javax.api.version>
