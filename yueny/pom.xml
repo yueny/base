@@ -96,7 +96,7 @@
 		<jcraft.jsch.version>0.1.50</jcraft.jsch.version>
 		<jboss.netty.version>3.2.5.Final</jboss.netty.version>
 		<io.netty.version>4.1.9.Final</io.netty.version>
-		<eclipse.jetty.version>9.4.2.v20170220</eclipse.jetty.version>
+		<eclipse.jetty.version>9.4.34.v20201102</eclipse.jetty.version>
 		<jboss.logging.version>3.3.0.Final</jboss.logging.version>
 
 		<alibaba.druid.version>1.1.16</alibaba.druid.version>
