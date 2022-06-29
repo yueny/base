@@ -68,7 +68,7 @@
 		<apache.velocity.tools.version>2.0</apache.velocity.tools.version>
 
 		<zkclient.version>0.7</zkclient.version>
-		<org.apache.zookeeper.version>3.4.7</org.apache.zookeeper.version>
+		<org.apache.zookeeper.version>3.4.14</org.apache.zookeeper.version>
 		<github.sgroschupf.zkclient.version>0.1</github.sgroschupf.zkclient.version>
 		<apache.curator.version>3.2.0</apache.curator.version>
 		<com.chinapay.netpayclient.version>2.0</com.chinapay.netpayclient.version>
