@@ -24,7 +24,7 @@
 	<properties>
 		<lombok.version>1.16.8</lombok.version>
 		<dozer.version>5.3.2</dozer.version>
-		<zookeeper.version>3.4.7</zookeeper.version>
+		<zookeeper.version>3.4.14</zookeeper.version>
 		<zkclient.version>0.7</zkclient.version>
 
 		<!-- Build args -->
