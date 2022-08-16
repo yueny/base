@@ -8,9 +8,12 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>core</module>
-		<module>yueny</module>
-		<module>boot</module>
+		<module>base-core</module>
+		<module>yueny-parent</module>
+
+		<!--<module>boot-parent</module>-->
+
+		<!--<module>example</module>-->
 	</modules>
   
 </project>

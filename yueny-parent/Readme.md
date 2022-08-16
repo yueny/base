@@ -126,4 +126,20 @@
    + 1.3.0-SNAPSHOT/RELEASE
         - 无， 跟随 base-core 的变更, 见 base/Readme.md
    
+   + 1.3.1-SNAPSHOT/RELEASE  (tree:1.3.1)
+        - 增加  com.ctrip.framework.apollo#apollo-client  1.7.0
+        - 升级 org.springframework 由 4.3.3.RELEASE 改为 5.0.10.RELEASE
+        
+   + 1.4.0-SNAPSHOT/RELEASE  (tree:1.4.0)
+        - 升级 org.springframework 由 5.0.10.RELEASE 改为 5.3.9
+        - 升级 org.springframework.batch 由 3.0.7.RELEASE 改为 4.3.3
+        - 升级 org.springframework.security 由 4.1.3.RELEASE 改为 5.5.2
+        - 升级 lombok 由 1.18.8 改为 1.18.20
+        - 升级 dozer 由 5.3.2 改为 5.5.1
+        - 升级 org.aspectj.aspectjweaver 由 1.8.10 改为 1.9.6
+        - 升级 org.springframework.data.spring-data-redis 由 1.7.11.RELEASE 改为 2.5.4
+        - 升级 redis.clients.jedis 由 2.8.1 改为 3.6.3
+        
+   + 1.5.0  (tree:1.5.0)
+        - nexus.maven.url.version 由 nexus.whosly.com 改为 nexus.codealy.com
         

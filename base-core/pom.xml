@@ -2,15 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-<!--	<parent>-->
-<!--		<groupId>org.sonatype.oss</groupId>-->
-<!--		<artifactId>oss-parent</artifactId>-->
-<!--		<version>9</version>-->
-<!--	</parent>-->
-
 	<groupId>com.whosly</groupId>
 	<artifactId>base-core</artifactId>
-	<version>1.3.0-RELEASE</version>
+	<version>1.5.0-RELEASE</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<url>https://github.com/yueny/base</url>
@@ -39,9 +33,8 @@
 
 		<!-- 需要 ${env} -->
 		<maven.war.plugin.version>2.2</maven.war.plugin.version>
-		<!-- bd -->
-		<!--		<nexus.maven.url.version>106.13.20.136:9090</nexus.maven.url.version>-->
-		<nexus.maven.url.version>nexus.whosly.com</nexus.maven.url.version>
+
+		<nexus.maven.url.version>https://nexus.codealy.com</nexus.maven.url.version>
 
 		<!-- Sonar -->
 		<jacoco.maven.version>0.7.9</jacoco.maven.version>
@@ -250,10 +243,6 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
 					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
 				</plugins>
 			</build>
 
@@ -266,7 +255,7 @@
 			<repositories>
 				<repository>
 					<id>nexus-snapshots</id>
-					<url>http://${nexus.maven.url.version}/repository/maven-public/</url>
+					<url>${nexus.maven.url.version}/repository/maven-public/</url>
 					<snapshots>
 						<updatePolicy>always</updatePolicy>
 					</snapshots>
@@ -278,12 +267,12 @@
 				<snapshotRepository>
 					<id>nexus-snapshots</id>
 					<name>Snapshots Repository</name>
-					<url>http://${nexus.maven.url.version}/repository/snapshots/</url>
+					<url>${nexus.maven.url.version}/repository/snapshots/</url>
 				</snapshotRepository>
 				<repository>
 					<id>nexus-releases</id>
 					<name>nexus repository</name>
-					<url>http://${nexus.maven.url.version}/repository/releases-yueny/</url>
+					<url>${nexus.maven.url.version}/repository/releases-yueny/</url>
 				</repository>
 			</distributionManagement>
 		</profile>
@@ -343,7 +332,7 @@
 
 
 			<!-- 【注】snapshotRepository 与 repository 中的 id 一定要与 setting.xml 中 server 的 id 保持一致！ -->
-			<!--	&lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;  -->
+			<!--   &lt;!&ndash; 个人下载仓库 repositories &ndash;&gt;  -->
 			<repositories>
 				<repository>
 					<id>sonatype-nexus-snapshots</id>
@@ -385,9 +374,9 @@
 
 	<!-- SCM信息 -->
 	<scm>
-		<url>https://github.com/yueny/base</url>
-		<connection>scm:https://github.com/yueny/base.git</connection>
-		<developerConnection>scm:https://github.com/yueny/base.git</developerConnection>
+		<url>https://gitee.com/whosly/base</url>
+		<connection>scm:https://gitee.com/whosly/base.git</connection>
+		<developerConnection>scm:https://gitee.com/whosly/base.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 

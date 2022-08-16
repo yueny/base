@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo
+  redis:
+    host:
+    port:
+    password:
+    database: 5
+    timeout: 10000ms
+
+
+
+server:
+  port: 8000

@@ -13,7 +13,9 @@
 
 包含base-core、yueny-parent
 
-见 [![base_core_依赖图.png](https://github.com/yueny/base/blob/1.3.0/base_core_依赖图.png)]()
+见 ![base_core_依赖图.png](base_core_依赖图.png)
+
+[github](https://github.com/yueny/base) 迁移至  [gitee](https://gitee.com/whosly/base) 
 
 ## **base-core**
    > 管理maven、仓库等信息， 独立依赖.
